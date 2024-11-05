@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 //mapean las solicitudes HTTP (GET, POST, PUT, DELETE) a los métodos correspondientes de un controlador.
-Route::get('/notes', [App\Http\Controllers\NoteController::class, 'index']);
+Route::get('/notes', [App\Http\Controllers\NoteController::class, 'index']); //GET
 Route::post('/notes', [App\Http\Controllers\NoteController::class, 'store']); 
 Route::get('/notes/{id}', [App\Http\Controllers\NoteController::class, 'show']); 
 Route::put('/notes/{id}', [App\Http\Controllers\NoteController::class, 'update']);
