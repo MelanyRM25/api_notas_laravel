@@ -13,24 +13,29 @@ class NoteController extends Controller
     }
     //crear notas "CREATE" 
     function store(Request $request){
-        $validateData = $request -> validate([
-            "title"=> "required",                        
-            "content"=> "required",    ]
-        );
+
+        $colores = ["red","green","blue","grey","orange","yellow"];
+        $color_rand = array_rand($colores);
+        // $validateData = $request -> validate([
+        //     "title"=> "required",                        
+        //     "content"=> "required",    ]
+        // );
         $date  = date ("Y-m-d H:i:s"); //trae la fecha y hora del servidor
         $request -> merge (["date"=> $date]); 
+        $request -> merge (["color"=> $colores[$color_rand]]);
+
         return Note::create($request->all());
     }
     //MOSTRAR - READ 
     function show($id){
         $note = Note::find($id);
-     if($note) {   
+        if($note) {   
         return $note;
-     }else {
+    }else {
         return response()->json([
             "error"=> "Nota no encontrada"
             ],404);
-     }
+        }
     }
     //ACTUALIZAR - UPDATE
     function update(Request $request, $id){
