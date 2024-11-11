@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
+Route::post('/login', [App\Http\Controllers\UserController::class, 'login']);
+
 //mapean las solicitudes HTTP (GET, POST, PUT, DELETE) a los métodos correspondientes de un controlador.
 Route::get('/notes', [App\Http\Controllers\NoteController::class, 'index']); //GET
 Route::post('/notes', [App\Http\Controllers\NoteController::class, 'store']); 
